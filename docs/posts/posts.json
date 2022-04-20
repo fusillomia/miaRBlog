@@ -15,5 +15,22 @@
     "preview": "posts/welcome/welcome_files/figure-html5/unnamed-chunk-1-1.png",
     "last_modified": "2022-04-20T15:31:24-05:00",
     "input_file": {}
+  },
+  {
+    "path": "posts/2022-04-20-post2/",
+    "title": "post2",
+    "description": "A short description of the post.",
+    "author": [
+      {
+        "name": "Mia Fusillo",
+        "url": "https://fusillomia.github.io/miaRBlog/"
+      }
+    ],
+    "date": "2022-04-20",
+    "categories": [],
+    "contents": "\nbelow…\n\n\n\n\n\n\n",
+    "preview": "posts/2022-04-20-post2/post2_files/figure-html5/unnamed-chunk-1-1.png",
+    "last_modified": "2022-04-20T16:58:33-05:00",
+    "input_file": "post2.knit.md"
   }
 ]
