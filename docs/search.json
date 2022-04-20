@@ -10,10 +10,10 @@
     },
     {
       "path": "index.html",
-      "title": "My Blog",
+      "title": "Mia's R Blog",
       "author": [],
       "contents": "\n\n\n\n",
-      "last_modified": "2022-04-20T17:05:58-05:00"
+      "last_modified": "2022-04-20T17:11:16-05:00"
     }
   ],
   "collections": ["posts/posts.json"]
