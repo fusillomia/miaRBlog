@@ -107,6 +107,7 @@ ETS %>% gg_tsresiduals()
 Glance(), augment(), and components() are all functions that can be used on the ETS model output to estimate our parameters.
 
 At the end of this chunk, I add the levels, slopes, forecasts, and residuals, to the dataframe.
+
 ```{r}
 ## glance is useful for finding sigma and model selection 
 ETS_g <- glance(ETS) 
@@ -126,12 +127,14 @@ df <- df %>% add_column(level = ETS_c$level[2:45],
 
 ### NORMALITY OF RESIDUALS
 Checking for Normality of residuals. p > 0.05, so residuals are Normally distributed. This tells us that our prediction intervals will be reliable.
+
 ```{r}
 ad.test(ETS_a$.resid)
 ```
 
 ### FORECASTING MEANS AND PREDICTION INTERVALS FOR 3 PERIODS AHEAD
 Forecasting 3 periods into the future, including prediction intervals, using forecast() and hilo().
+
 ```{r}
 ETS_f <- ETS %>% forecast(h=3)
 pred_int <- hilo(ETS_f)
@@ -139,7 +142,8 @@ show(pred_int)
 ```
 
 ### CALCULATING PREDICTION INTERVALS BY HAND
-Calculating mean and prediction interval by hand and matching with hilo output
+Calculating mean and prediction interval by hand and matching with hilo output.
+
 ```{r}
 # Holt's Model for forecasting: Y_t = L_t-1 + B_t-1 + epsilon_t
 
@@ -166,7 +170,8 @@ pred_int[1,6]
 ```
 
 ### IN SAMPLE OBSERVATIONS AND ONE STEP AHEAD FORECASTS FROM ETS AAN MODEL VS TIME
-Plotting in-sample observations and one-step ahead forecasts from ETS AAN model against Time
+Plotting in-sample observations and one-step ahead forecasts from ETS AAN model against Time.
+
 ```{r}
 ggplot(df, aes(x=qtr, y=LogA)) +
   geom_line(aes(y=LogA)) +
@@ -176,6 +181,7 @@ ggplot(df, aes(x=qtr, y=LogA)) +
 
 ### FITTING A DETERMINISTIC MODEL
 Computing a deterministic model to show that it is inflexible compared to Holt's.
+
 ```{r}
 df <- df %>% mutate(TimeSq = Time^2, .after="Time")
 det <- df %>% model(TSLM(LogA ~ Time + TimeSq))
@@ -187,7 +193,8 @@ det_model <- alpha + beta1*df$Time + beta2*df$TimeSq
 ```
 
 ### IN SAMPLE OBSERVATIONS, ONE STEP AHEAD FORECASTS FROM ETS AAN MODEL, AND DETERMINISTIC MODEL VS TIME 
-Plotting in-sample observations, one-step ahead forecasts from ETS AAN model, and deterministic model against Time
+Plotting in-sample observations, one-step ahead forecasts from ETS AAN model, and deterministic model against Time.
+
 ```{r}
 ggplot(df, aes(x=qtr, y=LogA)) +
   geom_line(aes(x=qtr, y=LogA)) +

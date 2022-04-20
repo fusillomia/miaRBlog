@@ -117,7 +117,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["Apple_Revenue.csv","time-series-forecasting-apple-revenue-with-holts_files/figure-html5/unnamed-chunk-12-1.png","time-series-forecasting-apple-revenue-with-holts_files/figure-html5/unnamed-chunk-14-1.png","time-series-forecasting-apple-revenue-with-holts_files/figure-html5/unnamed-chunk-3-1.png","time-series-forecasting-apple-revenue-with-holts_files/figure-html5/unnamed-chunk-4-1.png","time-series-forecasting-apple-revenue-with-holts_files/figure-html5/unnamed-chunk-5-1.png","time-series-forecasting-apple-revenue-with-holts_files/figure-html5/unnamed-chunk-6-1.png","time-series-forecasting-apple-revenue-with-holts_files/figure-html5/unnamed-chunk-7-1.png"]}
+  {"type":"character","attributes":{},"value":["Apple_Revenue.csv","time-series-forecasting-apple-revenue-with-holts_files/anchor-4.2.2/anchor.min.js","time-series-forecasting-apple-revenue-with-holts_files/bowser-1.9.3/bowser.min.js","time-series-forecasting-apple-revenue-with-holts_files/distill-2.2.21/template.v2.js","time-series-forecasting-apple-revenue-with-holts_files/figure-html5/unnamed-chunk-12-1.png","time-series-forecasting-apple-revenue-with-holts_files/figure-html5/unnamed-chunk-14-1.png","time-series-forecasting-apple-revenue-with-holts_files/figure-html5/unnamed-chunk-3-1.png","time-series-forecasting-apple-revenue-with-holts_files/figure-html5/unnamed-chunk-4-1.png","time-series-forecasting-apple-revenue-with-holts_files/figure-html5/unnamed-chunk-5-1.png","time-series-forecasting-apple-revenue-with-holts_files/figure-html5/unnamed-chunk-6-1.png","time-series-forecasting-apple-revenue-with-holts_files/figure-html5/unnamed-chunk-7-1.png","time-series-forecasting-apple-revenue-with-holts_files/jquery-3.5.1/AUTHORS.txt","time-series-forecasting-apple-revenue-with-holts_files/jquery-3.5.1/jquery-1.12.4.js","time-series-forecasting-apple-revenue-with-holts_files/jquery-3.5.1/jquery-1.12.4.min.js","time-series-forecasting-apple-revenue-with-holts_files/jquery-3.5.1/jquery-1.12.4.min.map","time-series-forecasting-apple-revenue-with-holts_files/jquery-3.5.1/jquery-2.2.4.js","time-series-forecasting-apple-revenue-with-holts_files/jquery-3.5.1/jquery-2.2.4.min.js","time-series-forecasting-apple-revenue-with-holts_files/jquery-3.5.1/jquery-2.2.4.min.map","time-series-forecasting-apple-revenue-with-holts_files/jquery-3.5.1/jquery-3.5.1.js","time-series-forecasting-apple-revenue-with-holts_files/jquery-3.5.1/jquery-3.5.1.min.js","time-series-forecasting-apple-revenue-with-holts_files/jquery-3.5.1/jquery-3.5.1.min.map","time-series-forecasting-apple-revenue-with-holts_files/jquery-3.5.1/LICENSE.txt","time-series-forecasting-apple-revenue-with-holts_files/popper-2.6.0/popper.min.js","time-series-forecasting-apple-revenue-with-holts_files/tippy-6.2.7/tippy-bundle.umd.min.js","time-series-forecasting-apple-revenue-with-holts_files/tippy-6.2.7/tippy-light-border.css","time-series-forecasting-apple-revenue-with-holts_files/tippy-6.2.7/tippy.css","time-series-forecasting-apple-revenue-with-holts_files/tippy-6.2.7/tippy.umd.min.js","time-series-forecasting-apple-revenue-with-holts_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1580,7 +1580,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </div>
 <h3 id="model-parameters">MODEL PARAMETERS</h3>
 <p>Glance(), augment(), and components() are all functions that can be used on the ETS model output to estimate our parameters.</p>
-At the end of this chunk, I add the levels, slopes, forecasts, and residuals, to the dataframe.
+<p>At the end of this chunk, I add the levels, slopes, forecasts, and residuals, to the dataframe.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'>## glance is useful for finding sigma and model selection </span>
@@ -1601,7 +1601,7 @@ At the end of this chunk, I add the levels, slopes, forecasts, and residuals, to
 </div>
 </div>
 <h3 id="normality-of-residuals">NORMALITY OF RESIDUALS</h3>
-Checking for Normality of residuals. p &gt; 0.05, so residuals are Normally distributed. This tells us that our prediction intervals will be reliable.
+<p>Checking for Normality of residuals. p &gt; 0.05, so residuals are Normally distributed. This tells us that our prediction intervals will be reliable.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/nortest/man/ad.test.html'>ad.test</a></span><span class='op'>(</span><span class='va'>ETS_a</span><span class='op'>$</span><span class='va'>.resid</span><span class='op'>)</span>
@@ -1614,7 +1614,7 @@ data:  ETS_a$.resid
 A = 0.54817, p-value = 0.1495</code></pre>
 </div>
 <h3 id="forecasting-means-and-prediction-intervals-for-3-periods-ahead">FORECASTING MEANS AND PREDICTION INTERVALS FOR 3 PERIODS AHEAD</h3>
-Forecasting 3 periods into the future, including prediction intervals, using forecast() and hilo().
+<p>Forecasting 3 periods into the future, including prediction intervals, using forecast() and hilo().</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>ETS_f</span> <span class='op'>&lt;-</span> <span class='va'>ETS</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> <span class='fu'>forecast</span><span class='op'>(</span>h<span class='op'>=</span><span class='fl'>3</span><span class='op'>)</span>
@@ -1632,7 +1632,7 @@ Forecasting 3 periods into the future, including prediction intervals, using for
 # … with 1 more variable: 95% &lt;hilo&gt;</code></pre>
 </div>
 <h3 id="calculating-prediction-intervals-by-hand">CALCULATING PREDICTION INTERVALS BY HAND</h3>
-Calculating mean and prediction interval by hand and matching with hilo output
+<p>Calculating mean and prediction interval by hand and matching with hilo output.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Holt's Model for forecasting: Y_t = L_t-1 + B_t-1 + epsilon_t</span>
@@ -1695,7 +1695,7 @@ Model: ETS(A,A,N)
 </div>
 </div>
 <h3 id="in-sample-observations-and-one-step-ahead-forecasts-from-ets-aan-model-vs-time">IN SAMPLE OBSERVATIONS AND ONE STEP AHEAD FORECASTS FROM ETS AAN MODEL VS TIME</h3>
-Plotting in-sample observations and one-step ahead forecasts from ETS AAN model against Time
+<p>Plotting in-sample observations and one-step ahead forecasts from ETS AAN model against Time.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>df</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x<span class='op'>=</span><span class='va'>qtr</span>, y<span class='op'>=</span><span class='va'>LogA</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
@@ -1707,7 +1707,7 @@ Plotting in-sample observations and one-step ahead forecasts from ETS AAN model 
 <p><img src="time-series-forecasting-apple-revenue-with-holts_files/figure-html5/unnamed-chunk-12-1.png" width="624" /></p>
 </div>
 <h3 id="fitting-a-deterministic-model">FITTING A DETERMINISTIC MODEL</h3>
-Computing a deterministic model to show that it is inflexible compared to Holt’s.
+<p>Computing a deterministic model to show that it is inflexible compared to Holt’s.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>df</span> <span class='op'>&lt;-</span> <span class='va'>df</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>TimeSq <span class='op'>=</span> <span class='va'>Time</span><span class='op'>^</span><span class='fl'>2</span>, .after<span class='op'>=</span><span class='st'>"Time"</span><span class='op'>)</span>
@@ -1721,7 +1721,7 @@ Computing a deterministic model to show that it is inflexible compared to Holt�
 </div>
 </div>
 <h3 id="in-sample-observations-one-step-ahead-forecasts-from-ets-aan-model-and-deterministic-model-vs-time">IN SAMPLE OBSERVATIONS, ONE STEP AHEAD FORECASTS FROM ETS AAN MODEL, AND DETERMINISTIC MODEL VS TIME</h3>
-Plotting in-sample observations, one-step ahead forecasts from ETS AAN model, and deterministic model against Time
+<p>Plotting in-sample observations, one-step ahead forecasts from ETS AAN model, and deterministic model against Time.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>df</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x<span class='op'>=</span><span class='va'>qtr</span>, y<span class='op'>=</span><span class='va'>LogA</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
