@@ -5,7 +5,7 @@ description: |
   reading what we have to say!
 author:
   - name: Mia Fusillo 
-    url: https://example.com/norajones
+    url: https://fusillomia.github.io/miaRBlog/
     affiliation: Spacely Sprockets
     affiliation_url: https://example.com/spacelysprokets
 date: 04-20-2022

@@ -4,7 +4,7 @@ description: |
   A short description of the post.
 author:
   - name: Mia Fusillo
-    url: https://example.com/norajones
+    url: https://fusillomia.github.io/miaRBlog/
 date: 2022-04-20
 output:
   distill::distill_article:
