@@ -1,0 +1,19 @@
+[
+  {
+    "path": "posts/welcome/",
+    "title": "Mia's R Blog",
+    "description": "Welcome to our new blog, My Blog. We hope you enjoy \nreading what we have to say!",
+    "author": [
+      {
+        "name": "Mia Fusillo",
+        "url": "https://example.com/norajones"
+      }
+    ],
+    "date": "2022-04-20",
+    "categories": [],
+    "contents": "\nbelow is a graph …\n\n\n\n\n\n\n",
+    "preview": "posts/welcome/welcome_files/figure-html5/unnamed-chunk-1-1.png",
+    "last_modified": "2022-04-20T15:31:24-05:00",
+    "input_file": {}
+  }
+]
