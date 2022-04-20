@@ -1,7 +1,7 @@
 ---
 title: "Time Series: Forecasting Apple Revenue with Holt's"
 description: |
-  A short description of the post.
+  Holt's Exponential Smoothing Model fit to 2011 - 2021 Apple Revenue Data 
 author:
   - name: Mia Fusillo
     url: https://fusillomia.github.io/miaRBlog/
