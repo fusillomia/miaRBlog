@@ -1,0 +1,48 @@
+---
+title: "Time Series: Forecasting Tesla Revenue"
+description: |
+  in progress
+author:
+  - name: Mia Fusillo
+    url: https://fusillomia.github.io/miaRBlog/
+date: 2022-04-25
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+```{r setup, echo=FALSE, warning=FALSE, message=FALSE}
+library(tidyverse)
+library(rvest)
+library(fpp3) 
+```
+
+```{r}
+URL <- "https://www.macrotrends.net/stocks/charts/TSLA/tesla/revenue"
+
+stats <- URL %>% 
+  read_html %>% 
+  html_nodes("table") %>% 
+  html_table()
+
+revenue <- as.data.frame(stats[2])
+
+colnames(revenue) = c("quarter", "revenue")
+revenue$time <- seq.int(nrow(revenue))
+
+revenue = revenue %>%
+  arrange(-time)
+
+revenue = revenue[4:52,]
+revenue$time <- seq.int(nrow(revenue))
+
+revenue <- revenue %>%
+  add_column(qtr=yearquarter("2010 Q1") + 0:48, .before=TRUE) %>%
+  as_tsibble(index=qtr)
+
+revenue = revenue[,c(4,1,3)]
+
+show(revenue)
+```
+
+
