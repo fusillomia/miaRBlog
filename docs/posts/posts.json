@@ -1,5 +1,22 @@
 [
   {
+    "path": "posts/2022-04-25-the-sharpe-ratio/",
+    "title": "Time Series: Forecasting Tesla Revenue",
+    "description": "in progress",
+    "author": [
+      {
+        "name": "Mia Fusillo",
+        "url": "https://fusillomia.github.io/miaRBlog/"
+      }
+    ],
+    "date": "2022-04-25",
+    "categories": [],
+    "contents": "\n\n\n\n\n\nURL <- \"https://www.macrotrends.net/stocks/charts/TSLA/tesla/revenue\"\n\nstats <- URL %>% \n  read_html %>% \n  html_nodes(\"table\") %>% \n  html_table()\n\nrevenue <- as.data.frame(stats[2])\n\ncolnames(revenue) = c(\"quarter\", \"revenue\")\nrevenue$time <- seq.int(nrow(revenue))\n\nrevenue = revenue %>%\n  arrange(-time)\n\nrevenue = revenue[4:52,]\nrevenue$time <- seq.int(nrow(revenue))\n\nrevenue <- revenue %>%\n  add_column(qtr=yearquarter(\"2010 Q1\") + 0:48, .before=TRUE) %>%\n  as_tsibble(index=qtr)\n\nrevenue = revenue[,c(4,1,3)]\n\nshow(revenue)\n\n\n# A tsibble: 49 x 3 [1Q]\n    time     qtr revenue\n   <int>   <qtr> <chr>  \n 1     1 2010 Q1 $21    \n 2     2 2010 Q2 $28    \n 3     3 2010 Q3 $31    \n 4     4 2010 Q4 $36    \n 5     5 2011 Q1 $49    \n 6     6 2011 Q2 $58    \n 7     7 2011 Q3 $58    \n 8     8 2011 Q4 $39    \n 9     9 2012 Q1 $30    \n10    10 2012 Q2 $27    \n# … with 39 more rows\n\n\n\n\n",
+    "preview": {},
+    "last_modified": "2022-04-25T21:03:21-05:00",
+    "input_file": "the-sharpe-ratio.knit.md"
+  },
+  {
     "path": "posts/2022-04-20-time-series-forecasting-apple-revenue-with-holts/",
     "title": "Time Series: Forecasting Apple Revenue with Holt's",
     "description": "Holt's Exponential Smoothing Model fit to 2011 - 2021 Apple Revenue Data",
