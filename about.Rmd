@@ -1,9 +1,5 @@
 ---
-title: "About this blog"
-description: |
-  Some additional details about the blog
+title: "About me"
+description: " "
 ---
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
-```
+I am a student at the University of Texas at Austin. I am pursuing a Bachelor of Science in Psychology and a Certificate in Applied Statistical Modeling. I am interested in combining my passions for psychology and business through data science.
