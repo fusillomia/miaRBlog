@@ -1,7 +1,7 @@
 name: "miaRBlog"
 title: "My Blog"
 description: |
-  My Blog
+  Mia's R Blog
 output_dir: "docs"
 navbar:
   right:
