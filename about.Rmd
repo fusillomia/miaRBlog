@@ -1,5 +1,5 @@
 ---
-title: "About me"
-description: " "
+title: "Mia's R Blog"
+description: ""
 ---
 I am a student at the University of Texas at Austin. I am pursuing a Bachelor of Science in Psychology and a Certificate in Applied Statistical Modeling. I am interested in combining my passions for psychology and business through data science.
