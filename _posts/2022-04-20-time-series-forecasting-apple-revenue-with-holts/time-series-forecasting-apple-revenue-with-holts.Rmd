@@ -1,5 +1,5 @@
 ---
-title: "Time Series: Forecasting Apple Revenue with Holt's"
+title: "Holt's Exponential Smoothing Guide: Apple Revenue"
 description: |
   Holt's Exponential Smoothing Model fit to 2011 - 2021 Apple Revenue Data 
 author:
