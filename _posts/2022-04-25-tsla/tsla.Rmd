@@ -1,21 +1,24 @@
 ---
 title: "ARIMA Model Guide: Tesla Revenue"
-description: |
-  ARIMA Model fit to 2010 - 2022 Tesla Revenue Data
+description:
 author:
   - name: Mia Fusillo
     url: https://fusillomia.github.io/miaRBlog/
-date: 2022-04-25
+date: 5/31/2022
 output:
   distill::distill_article:
     self_contained: false
 ---
+### Packages
 
-```{r setup, echo=FALSE, warning=FALSE, message=FALSE}
+```{r, warning=FALSE, message=FALSE}
 library(tidyverse)
 library(rvest)
 library(fpp3) 
 ```
+
+### Web Scraping
+In my previous and first blog post, I manually scraped data off of the web. The data had less than 50 periods, so it wasn't too tedious to do by hand. However, this is clearly inefficient and would not be an option for larger datasets. For this blog, I read the HTML off of macro trends and used subsequent R syntax to scrape the specific data from the table on the page.
 
 ```{r}
 URL <- "https://www.macrotrends.net/stocks/charts/TSLA/tesla/revenue"
@@ -45,4 +48,8 @@ revenue = revenue[,c(4,1,3)]
 show(revenue)
 ```
 
+### Data Cleaning
+tsclean is a function that enables us to check for outliers and missing values.
 
+### ARIMA Model Selection
+The ARIMA command will filter through many different combinations of ARIMA models, specifically where p and q are respectively less than or equal to 3, and their sum is no more than 5.

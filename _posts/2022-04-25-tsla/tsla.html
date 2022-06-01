@@ -89,30 +89,27 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_meta_tags-->
   <title>ARIMA Model Guide: Tesla Revenue</title>
   
-  <meta property="description" itemprop="description" content="ARIMA Model fit to 2010 - 2022 Tesla Revenue Data"/>
   
   
   <!--  https://schema.org/Article -->
-  <meta property="article:published" itemprop="datePublished" content="2022-04-25"/>
-  <meta property="article:created" itemprop="dateCreated" content="2022-04-25"/>
+  <meta property="article:published" itemprop="datePublished" content="2022-05-31"/>
+  <meta property="article:created" itemprop="dateCreated" content="2022-05-31"/>
   <meta name="article:author" content="Mia Fusillo"/>
   
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
   <meta property="og:title" content="ARIMA Model Guide: Tesla Revenue"/>
   <meta property="og:type" content="article"/>
-  <meta property="og:description" content="ARIMA Model fit to 2010 - 2022 Tesla Revenue Data"/>
   <meta property="og:locale" content="en_US"/>
   
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
   <meta property="twitter:title" content="ARIMA Model Guide: Tesla Revenue"/>
-  <meta property="twitter:description" content="ARIMA Model fit to 2010 - 2022 Tesla Revenue Data"/>
   
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["ARIMA Model Guide: Tesla Revenue"]},{"type":"character","attributes":{},"value":["ARIMA Model fit to 2010 - 2022 Tesla Revenue Data\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Mia Fusillo"]},{"type":"character","attributes":{},"value":["https://fusillomia.github.io/miaRBlog/"]}]}]},{"type":"character","attributes":{},"value":["2022-04-25"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["ARIMA Model Guide: Tesla Revenue"]},{"type":"NULL"},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Mia Fusillo"]},{"type":"character","attributes":{},"value":["https://fusillomia.github.io/miaRBlog/"]}]}]},{"type":"character","attributes":{},"value":["5/31/2022"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   
@@ -1458,7 +1455,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"ARIMA Model Guide: Tesla Revenue","description":"ARIMA Model fit to 2010 - 2022 Tesla Revenue Data","authors":[{"author":"Mia Fusillo","authorURL":"https://fusillomia.github.io/miaRBlog/","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2022-04-25T00:00:00.000-04:00","citationText":"Fusillo, 2022"}
+{"title":"ARIMA Model Guide: Tesla Revenue","authors":[{"author":"Mia Fusillo","authorURL":"https://fusillomia.github.io/miaRBlog/","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2022-05-31T00:00:00.000-04:00","citationText":"Fusillo, 2022"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -1471,41 +1468,49 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <h1>ARIMA Model Guide: Tesla Revenue</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
-<p><p>ARIMA Model fit to 2010 - 2022 Tesla Revenue Data</p></p>
+
 </div>
 
 <div class="d-byline">
   Mia Fusillo <a href="https://fusillomia.github.io/miaRBlog/" class="uri">https://fusillomia.github.io/miaRBlog/</a> 
   
-<br/>2022-04-25
+<br/>5/31/2022
 </div>
 
 <div class="d-article">
+<h3 id="packages">Packages</h3>
 <div class="layout-chunk" data-layout="l-body">
-
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://rvest.tidyverse.org/'>rvest</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/robjhyndman/fpp3-package'>fpp3</a></span><span class='op'>)</span> 
+</code></pre>
 </div>
+</div>
+<h3 id="web-scraping">Web Scraping</h3>
+<p>In my previous and first blog post, I manually scraped data off of the web. The data had less than 50 periods, so it wasn’t too tedious to do by hand. However, this is clearly inefficient and would not be an option for larger datasets. For this blog, I read the HTML off of macro trends and used subsequent R syntax to scrape the specific data from the table on the page.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>URL</span> <span class='op'>&lt;-</span> <span class='st'>"https://www.macrotrends.net/stocks/charts/TSLA/tesla/revenue"</span>
 
-<span class='va'>stats</span> <span class='op'>&lt;-</span> <span class='va'>URL</span> <span class='op'>%&gt;%</span> 
-  <span class='va'>read_html</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>html_nodes</span><span class='op'>(</span><span class='st'>"table"</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>html_table</span><span class='op'>(</span><span class='op'>)</span>
+<span class='va'>stats</span> <span class='op'>&lt;-</span> <span class='va'>URL</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='va'>read_html</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://rvest.tidyverse.org/reference/rename.html'>html_nodes</a></span><span class='op'>(</span><span class='st'>"table"</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://rvest.tidyverse.org/reference/html_table.html'>html_table</a></span><span class='op'>(</span><span class='op'>)</span>
 
 <span class='va'>revenue</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/as.data.frame.html'>as.data.frame</a></span><span class='op'>(</span><span class='va'>stats</span><span class='op'>[</span><span class='fl'>2</span><span class='op'>]</span><span class='op'>)</span>
 
 <span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span><span class='op'>(</span><span class='va'>revenue</span><span class='op'>)</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"quarter"</span>, <span class='st'>"revenue"</span><span class='op'>)</span>
 <span class='va'>revenue</span><span class='op'>$</span><span class='va'>time</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq.int</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span><span class='op'>(</span><span class='va'>revenue</span><span class='op'>)</span><span class='op'>)</span>
 
-<span class='va'>revenue</span> <span class='op'>=</span> <span class='va'>revenue</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>arrange</span><span class='op'>(</span><span class='op'>-</span><span class='va'>time</span><span class='op'>)</span>
+<span class='va'>revenue</span> <span class='op'>=</span> <span class='va'>revenue</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/arrange.html'>arrange</a></span><span class='op'>(</span><span class='op'>-</span><span class='va'>time</span><span class='op'>)</span>
 
 <span class='va'>revenue</span> <span class='op'>=</span> <span class='va'>revenue</span><span class='op'>[</span><span class='fl'>4</span><span class='op'>:</span><span class='fl'>52</span>,<span class='op'>]</span>
 <span class='va'>revenue</span><span class='op'>$</span><span class='va'>time</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq.int</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span><span class='op'>(</span><span class='va'>revenue</span><span class='op'>)</span><span class='op'>)</span>
 
-<span class='va'>revenue</span> <span class='op'>&lt;-</span> <span class='va'>revenue</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>add_column</span><span class='op'>(</span>qtr<span class='op'>=</span><span class='fu'>yearquarter</span><span class='op'>(</span><span class='st'>"2010 Q1"</span><span class='op'>)</span> <span class='op'>+</span> <span class='fl'>0</span><span class='op'>:</span><span class='fl'>48</span>, .before<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+<span class='va'>revenue</span> <span class='op'>&lt;-</span> <span class='va'>revenue</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://tibble.tidyverse.org/reference/add_column.html'>add_column</a></span><span class='op'>(</span>qtr<span class='op'>=</span><span class='fu'>yearquarter</span><span class='op'>(</span><span class='st'>"2010 Q1"</span><span class='op'>)</span> <span class='op'>+</span> <span class='fl'>0</span><span class='op'>:</span><span class='fl'>48</span>, .before<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
   <span class='fu'>as_tsibble</span><span class='op'>(</span>index<span class='op'>=</span><span class='va'>qtr</span><span class='op'>)</span>
 
 <span class='va'>revenue</span> <span class='op'>=</span> <span class='va'>revenue</span><span class='op'>[</span>,<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>4</span>,<span class='fl'>1</span>,<span class='fl'>3</span><span class='op'>)</span><span class='op'>]</span>
@@ -1528,6 +1533,10 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 10    10 2012 Q2 $27    
 # … with 39 more rows</code></pre>
 </div>
+<h3 id="data-cleaning">Data Cleaning</h3>
+<p>tsclean is a function that enables us to check for outliers and missing values.</p>
+<h3 id="arima-model-selection">ARIMA Model Selection</h3>
+<p>The ARIMA command will filter through many different combinations of ARIMA models, specifically where p and q are respectively less than or equal to 3, and their sum is no more than 5.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
